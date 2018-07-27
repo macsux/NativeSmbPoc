@@ -1,0 +1,28 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model ShareMount.FormModel
+
+<h2>List Share</h2>
+
+
+<form asp-controller="Home" asp-action="List" method="post">
+    <div>
+        <span>SMB URI: </span>
+        <span><input asp-for="Url"  type="text" value="@Model.Url" style="width: 400px" /></span>
+        <input type="submit"/>
+    </div>
+</form>
+
+    
+@if(Model.Files != null)
+{
+ <ul>
+     @foreach (var file in Model.Files)
+     {
+         <li>@file</li>
+     }
+ </ul>
+ }
+@if (Model.Exception != null)
+{
+         <pre style="color: red">@Model.Exception</pre>
+}
